@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BookReadingEvent.Data.Event>
+
+@{
+    ViewBag.Title = "MyEvents";
+}
+
+<h2>MyEvents</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            @Html.ActionLink(item.Title, "DetailsById", "Home", new { id = item.EventID }, null)
+            <div class="span6 pull-right">
+                @Html.ActionLink("Edit", "Edit", "Events", new { id = item.EventID }, null)
+            </div>
+        </li>
+    }
+</ul>
+
+@section scripts{
+    <script>
+            $(function () {
+                var successMessage = '@TempData["SuccessMessage"]'
+                var failMessage = '@TempData["Fail"]'
+                if (successMessage != '')
+                    alertify.success(successMessage);
+                else if (failMessage != '')
+                    alertify.confirm(failMessage,
+                        function () {
+                            alertify.success('Ok');
+                        },
+                        function () {
+                            alertify.error('Cancel');
+                        });
+            });
+    </script>
+}
+
+

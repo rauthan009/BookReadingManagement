@@ -1,0 +1,35 @@
+﻿@model BookReadingEvent.Web.Models.PassedAndFutureEventsViewModel
+
+@{
+    ViewBag.Title = "_Events";
+}
+
+<h2>Event</h2>
+<div class="container">
+    <div class="col-sm-6">
+        <ul class="list-group ">
+            <lh>
+                Passed Events
+            </lh>
+            @foreach (var item in Model.PassedEvents)
+            {
+                <li class="list-group-item">
+                    @Html.ActionLink(item.Title,"DetailsById","Home", new { id = item.EventID },null)
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-sm-6">
+        <ul class="list-group ">
+            <lh>
+                Upcoming Events
+            </lh>
+            @foreach (var item in Model.FutureEvents)
+            {
+            <li class="list-group-item">
+                @Html.ActionLink(item.Title, "DetailsById", "Home", new { id = item.EventID }, null)
+            </li>
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model BookReadingEvent.Web.Models.EventInputModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr/>
+
+@Html.Partial("_EventEditor")
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+}
+
+@section styles {
+    <link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
+}

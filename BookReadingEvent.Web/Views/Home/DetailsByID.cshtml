@@ -1,0 +1,113 @@
+﻿@model BookReadingEvent.Web.Models.EventDetailsViewModel
+
+@{
+    ViewBag.Title = "Event Details";
+}
+
+<h2>Event Details</h2>
+
+
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        @if (Model.Duration > 0)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Duration)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Duration)
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model=>model.Invited)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Invited)
+        </dd>
+
+        @if (Model.Description != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        }
+        @if (Model.OtherDetails != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.OtherDetails)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OtherDetails)
+            </dd>
+        }
+        @if (Model.Comments.Any())
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Comments)
+            </dt>
+            <dd>
+                <ul>
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <li>
+                            @comment.Text
+                            @if (@comment.Author != null)
+                            {
+                                @: (by @comment.Author)
+                            }
+                        </li>
+                    }
+                </ul>
+
+            </dd>
+        }
+
+    </dl>
+    @if (ViewBag.CanEdit)
+    {
+        @Html.ActionLink("Edit", "Edit", "Events", new { id = Model.ID }, new { @class = "btn btn-default" })
+        <span></span>
+        @Html.ActionLink("Delete", "Delete", "Events", new { id = Model.ID }, new { @class = "btn btn-default" })
+    }
+</div>
+<p> 
+    @Html.ActionLink("Back to HomePage", "Index")
+</p>

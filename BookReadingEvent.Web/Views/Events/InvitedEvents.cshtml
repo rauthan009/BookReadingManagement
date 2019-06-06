@@ -1,0 +1,10 @@
+﻿@model BookReadingEvent.Web.Models.PassedAndFutureEventsViewModel
+@{
+    ViewBag.Title = "Events you have been Invited to";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<!-- A reference to _events view in shared folder -->
+@Html.Partial("_Events")
